@@ -1,4 +1,13 @@
 
+"""
+Project 1: Question 1: '1965 Piper Cherokee PA-28-180' Flight Approval System
+Maxwell Seery
+"""
+
+"""
+EVERYTHING
+"""
+
 # Constants
 EMPTY_WEIGHT = 1471    # lbs
 GRAVITY_CENTER = 85.9  # in
@@ -9,35 +18,47 @@ MAX_RAMP_WEIGHT = 2400 # lbs
 MAX_FUEL = 50          # US Gallons
 
 # Program welcome message and data
+dashes = ((len("Empty Weight           : 1,471 lbs") + 10) * '-')
+
 title = "\nWelcome to the '1965 Piper Cherokee PA-28-180' Flight Approval System\n"
-table_title = "\nAircraft specifics\n" + ((len("Empty Weight           : 1,471 lbs") + 8) * '-')
+table_title = "\nDry static flight data\n" + dashes
 
 data_table = (
-    "\n\tEmpty Weight           : 1,471 lbs\n"
-    "\tCenter of Gravity      : 85.9 in\n"
-    "\tFront Seats Moment Arm : 85.5 in\n"
-    "\tFuel Tank Moment Arm   : 95 in\n"
-    "\tRear Seats Moment Arm  : 181.1 in\n"
-    "\tMaximum Ramp Weight    : 2400 in\n"
-    "\tMaximum Fuel           : 50 lbs\n"
+    "\n\tEmpty Weight           : 1,471 [lbs]\n"
+    "\tCenter of Gravity      : 85.9 [in]\n"
+    "\tFront Seats Moment Arm : 85.5 [in]\n"
+    "\tFuel Tank Moment Arm   : 95 [in]\n"
+    "\tRear Seats Moment Arm  : 181.1 [in]\n"
+    "\tMaximum Ramp Weight    : 2400 [in]\n"
+    "\tMaximum Fuel           : 50 [US Gallons]\n"
 )
 
-print(title, table_title, data_table, ((len("Empty Weight           : 1,471 lbs") + 8) * '-'))
+print(title, table_title, data_table, dashes)
 
 def collecting_information():
+    """
+    User information collecting in which checks user data compared with the flight constants
+
+    Returns
+        - total_pilot_weight (float)     : Total pilot weight in [lbs]
+        - total_passenger_weight (float) : Total passenger weight in [lbs]
+        - total_fuel_weight (float)      : Total fuel weight in [lbs]
+        - ramp_weight (float)            : Total ramp weight in [lbs]
+    """
+
     # Collecting information
     while True:
-        fuel_amount = float(input("How much fuel is on board (in US Gallons)? "))
+        fuel_amount = float(input("\nHow much fuel is on board (in US Gallons)? : "))
         if ((fuel_amount >= 0) and (fuel_amount <= 50)):
             break
         else:
-            print("\nPlease enter a weight that is between 0-50 lbs please.\n")
+            print("\nERROR: Please enter a weight that is between 0-50 lbs please.\n")
             continue
 
-    pilot_weight =  float(input("What is the weight of the pilot (in lbs)? "))
-    copilot_weight = float(input("What is the weight of the co-pilot (in lbs)? "))
-    passenger_weight_1 = float(input("What is the weight of passenger one? (if no passenger enter 0) "))
-    passenger_weight_2 = float(input("What is the weight of passenger two? (if no passenger enter 0) "))
+    pilot_weight =  float(input("What is the weight of the pilot (in lbs)? : "))
+    copilot_weight = float(input("What is the weight of the co-pilot (in lbs)? : "))
+    passenger_weight_1 = float(input("What is the weight of passenger one? (if no passenger enter 0) : "))
+    passenger_weight_2 = float(input("What is the weight of passenger two? (if no passenger enter 0) : "))
     
     total_pilot_weight = pilot_weight + copilot_weight
     total_passenger_weight = passenger_weight_1 + passenger_weight_2
@@ -53,43 +74,76 @@ def collecting_information():
     )
 
     if (ramp_weight > MAX_RAMP_WEIGHT):
-        print(f"Ramp weight is over the limit by {MAX_RAMP_WEIGHT - ramp_weight} lbs")
+        print(f"Ramp weight is over the limit by {-(MAX_RAMP_WEIGHT - ramp_weight)} lbs")
 
     return total_pilot_weight, total_passenger_weight, total_fuel_weight, ramp_weight
-
-def current_flight_data(ramp_weight, actual_gravity_center):
-    print("\nCurrent flight data")
-    print('-' * 46)
-    print(f"\tCurrent Weight  : {ramp_weight} [lbs]")
-    print(f"\tMaximum Weight  : {MAX_RAMP_WEIGHT} [lbs]")
-    print(f"\n\tCurrent Balance : {round(actual_gravity_center, 4)} [in]")
-    print("\tBalance Range   : 86.7 < x < 95.8 [in]")
-    print('-' * 46)
                                             
 def moment_calculations():
-    print("")
+    """
+    Calculates all of the moment data and determines whether these conditions flight worthy
+
+    Prints
+        - Flight approval/disapproval
+        - Static flight data
+    """
     pilots, passengers, fuel_weight, ramp_weight = collecting_information()
-    moment = (FRONT_SEATS_MA * pilots) + (REAR_SEATS_MA * passengers) + (FUEL_TANKS_MA * fuel_weight) + (EMPTY_WEIGHT * GRAVITY_CENTER)
-    actual_gravity_center = moment / ramp_weight
     
-    if ((actual_gravity_center >= 86.7) and (actual_gravity_center <= 95.8)):
-        print("\nThe aircraft is within the weight and balace. This plane is safe to be flown. ")
-        current_flight_data(ramp_weight, actual_gravity_center)
+    front_seat_moment = FRONT_SEATS_MA * pilots
+    rear_seat_moment = REAR_SEATS_MA * passengers
+    fuel_moment = FUEL_TANKS_MA * fuel_weight
+    empty_aircraft_moment = EMPTY_WEIGHT * GRAVITY_CENTER
+    total_moment = front_seat_moment + rear_seat_moment + fuel_moment + empty_aircraft_moment
+    loaded_moment_arm = total_moment / ramp_weight
+    
+    if ((loaded_moment_arm >= 86.7) and (loaded_moment_arm <= 95.8)):
+        print("\n\nThe aircraft is within the weight and balace. This plane is safe to be flown. ")
     else:
         print("\nThe aircraft is NOT within the weight and balance. Due to this, this plane should NOT be flown. ")
-        current_flight_data(ramp_weight, actual_gravity_center)
+
+    # wet_data_table = [
+    #     round(fuel_weight, 5), 
+    #     round(ramp_weight, 5),
+    #     round(front_seat_moment, 5),
+    #     round(rear_seat_moment, 5),
+    #     round(fuel_moment, 5),
+    #     round(empty_aircraft_moment, 5),
+    #     round(total_moment, 5),
+    #     round(actual_gravity_center, 5)
+    # ]
+
+    # dry_data_table = [
+    #     EMPTY_WEIGHT * 6,
+    #     MAX_RAMP_WEIGHT
+    # ]
+
+    # EMPTY_WEIGHT = 1471    # lbs
+    # GRAVITY_CENTER = 85.9  # in
+    # FRONT_SEATS_MA = 85.5  # in
+    # FUEL_TANKS_MA = 95     # in
+    # REAR_SEATS_MA = 181.1  # in
+    # MAX_RAMP_WEIGHT = 2400 # lbs
+    # MAX_FUEL = 50          # US Gallons
+
+    print("\nCurrent static flight data")
+    print('-' * 50)
+    print(f"\tTotal Fuel Weight     : {round(fuel_weight, 5)} [lbs]")
+    print(f"\tTotal Ramp Weight     : {round(ramp_weight, 5)} [lbs]")
+    print(f"\tFront Seats Moment    : {round(front_seat_moment, 5)} [lbs-in]")
+    print(f"\tRear Seats Moment     : {round(rear_seat_moment, 5)} [lbs-in]")
+    print(f"\tFuel Moment           : {round(fuel_moment, 5)} [lbs-in]")
+    print(f"\tEmpty Aircraft Moment : {round(empty_aircraft_moment, 5)} [lbs-in]")
+    print(f"\tTotal Moment          : {round(total_moment, 5)} [lbs-in]")
+    print(f"\tLoaded Moment Arm     : {round(loaded_moment_arm, 5)} [in]")
+    print('-' * 50)
 
 while True:
     moment_calculations()
 
-    print("\nProgram Commands")
-    print(str((len("Program Commands") + 2) * '-'))
-    print("\tRUN  : '0'\n")
-    print("\tEXIT : '1'\n")
-    print(str((len("Program Commands") + 2) * '-'))
-
-    user_command = int(input("\nRun or exit the program? "))
-    if (user_command == 1):
+    user_command = str(input("\nWould you like to run the program again? (Enter 'Yes' or 'No'): ")).lower()
+    if not ((user_command == "yes") or (user_command == "no")):
+        print("ERROR: Please either enter 'Yes' or 'No")
+        continue
+    elif (user_command == "no"):
         print("\nThank you for using the '1965 Piper Cherokee PA-28-180' Flight Approval System")
         break
     
