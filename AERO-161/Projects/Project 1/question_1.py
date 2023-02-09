@@ -65,8 +65,8 @@ def collecting_information():
 
     # Calculating ramp weight
     ramp_weight = (
-        total_fuel_weight + pilot_weight + copilot_weight + 
-        passenger_weight_1 + passenger_weight_2 + EMPTY_WEIGHT
+        total_fuel_weight + total_pilot_weight + 
+        total_passenger_weight + EMPTY_WEIGHT
     )
 
     if (ramp_weight > MAX_RAMP_WEIGHT):
