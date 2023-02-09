@@ -4,10 +4,6 @@ Project 1: Question 1: '1965 Piper Cherokee PA-28-180' Flight Approval System
 Maxwell Seery
 """
 
-"""
-EVERYTHING
-"""
-
 # Constants
 EMPTY_WEIGHT = 1471    # lbs
 GRAVITY_CENTER = 85.9  # in
