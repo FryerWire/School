@@ -86,6 +86,7 @@ def moment_calculations():
         - Flight approval/disapproval
         - Static flight data
     """
+    
     pilots, passengers, fuel_weight, ramp_weight = collecting_information()
     
     front_seat_moment = FRONT_SEATS_MA * pilots
@@ -99,30 +100,6 @@ def moment_calculations():
         print("\n\nThe aircraft is within the weight and balace. This plane is safe to be flown. ")
     else:
         print("\nThe aircraft is NOT within the weight and balance. Due to this, this plane should NOT be flown. ")
-
-    # wet_data_table = [
-    #     round(fuel_weight, 5), 
-    #     round(ramp_weight, 5),
-    #     round(front_seat_moment, 5),
-    #     round(rear_seat_moment, 5),
-    #     round(fuel_moment, 5),
-    #     round(empty_aircraft_moment, 5),
-    #     round(total_moment, 5),
-    #     round(actual_gravity_center, 5)
-    # ]
-
-    # dry_data_table = [
-    #     EMPTY_WEIGHT * 6,
-    #     MAX_RAMP_WEIGHT
-    # ]
-
-    # EMPTY_WEIGHT = 1471    # lbs
-    # GRAVITY_CENTER = 85.9  # in
-    # FRONT_SEATS_MA = 85.5  # in
-    # FUEL_TANKS_MA = 95     # in
-    # REAR_SEATS_MA = 181.1  # in
-    # MAX_RAMP_WEIGHT = 2400 # lbs
-    # MAX_FUEL = 50          # US Gallons
 
     print("\nCurrent static flight data")
     print('-' * 50)
