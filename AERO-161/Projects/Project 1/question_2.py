@@ -46,6 +46,6 @@ def change_the_name_of_this_function():
     print(f"Density Altitude    : {round(density_alititude, 2)} [ft]")
     print(52 * '-')
 
-def change_the_name_of_this_function():
+change_the_name_of_this_function()
 
 
