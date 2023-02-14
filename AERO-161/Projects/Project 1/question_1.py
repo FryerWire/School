@@ -109,14 +109,18 @@ def moment_calculations():
     print(f"\tLoaded Moment Arm     : {round(loaded_moment_arm, 5)} [in]")
     print('-' * 50)
 
-while True:
-    moment_calculations()
+def change_name_function():
+    while True:
+        moment_calculations()
 
-    user_command = str(input("\nWould you like to run the program again? (Enter 'Yes' or 'No'): ")).lower()
-    if not ((user_command == "yes") or (user_command == "no")):
-        print("ERROR: Please either enter 'Yes' or 'No")
-        continue
-    elif (user_command == "no"):
-        print("\nThank you for using the '1965 Piper Cherokee PA-28-180' Flight Approval System")
-        break
+        user_command = str(input("\nWould you like to run the program again? (Enter 'Yes' or 'No'): ")).lower()
+        if not ((user_command == "yes") or (user_command == "no")):
+            print("ERROR: Please either enter 'Yes' or 'No")
+            continue
+        elif (user_command == "no"):
+            print("\nThank you for using the '1965 Piper Cherokee PA-28-180' Flight Approval System")
+            break
+
+change_name_function()
+
     
