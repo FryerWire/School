@@ -1,0 +1,35 @@
+{
+    "Frames" : {
+      "Frame" : [
+        {
+          "Frame A" : {
+            "Length" : 2,
+            "Width" : 0.5,
+            "Height" : 
+            "Amount": 8
+          }
+        },
+        {
+          "Frame 2": {
+            "ID": "F2-4-03-05",
+            "Amount": 3
+          }
+        },
+        {
+          "Frame 3": {
+            "ID": "F3-3-03-05",
+            "Amount": 7
+          }
+        }
+      ],
+      "Frame Support": {
+        "ID": "FS-06-07-9",
+        "Amount": 4
+      },
+      "Frame Spine Support": {
+        "ID": "FSP-09-08-08",
+        "Amount": 2
+      }
+    }
+  }
+  
