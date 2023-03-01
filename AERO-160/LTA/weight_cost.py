@@ -60,10 +60,9 @@ parts_list = [
     [273.2, (1 / 2), (1 / 2)],
 ]
 
-updated_parts_list = []
-
 print("")
 
+updated_parts_list = []
 for part in parts_list:
     part_amount = math.ceil(part[0] / 36)
     part_width = part[1]
