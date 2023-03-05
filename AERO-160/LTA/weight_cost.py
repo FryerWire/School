@@ -50,7 +50,6 @@ for i, width in enumerate(WIDTH):
 
 # json_str = json.dumps(data, indent=4)
 
-
 parts_list = [
     [24, 2, (1 / 8)],
     [12, 1, (1 / 8)],
@@ -61,11 +60,9 @@ parts_list = [
     [273.2, (1 / 2), (1 / 2)],
 ]
 
-updated_parts_list = []
-
 print("")
 
-# total_cost = 0
+updated_parts_list = []
 for part in parts_list:
     part_amount = math.ceil(part[0] / 36)
     part_width = part[1]
@@ -74,11 +71,10 @@ for part in parts_list:
     if part_width in data["Width"]:
         height_index = data["Width"][part_width]["Height"].index(part_height)
         price = data["Width"][part_width]["Cost"][height_index]
-        # total_cost += part_amount * price
     else:
         print(f"ERROR: {part_width} has no data for width")
 
-    # Creates new parts list
+    # Appends to updated_parts_list
     part_names = [36, part_width, part_height, part_amount, price]
     updated_parts_list.append(part_names)
 

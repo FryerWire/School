@@ -1,0 +1,71 @@
+
+Pressure
+    -| Pressure = Force / Area [P, psi]
+
+Density
+    -| rho = mass / Volume [kg / m^3]
+                           [slug / ft^3]
+                           [lb_m / ft^3]
+
+Kinetic Energy / Temperature
+    -| KE = (3 / 2) * k * T
+    -| k = Boltzman Constant
+         = 1.38 E(-23) [J / K]
+
+Newton's Law of Universal Gravitation
+    -| F = G * [(m_1 * m_2) / (r ** 2)]
+    -| G = Gravitational Constant
+         = 6.67430e(-11) [(N * (m^2)) / (kg ^ 2)]
+         = 6.67430(15) [10^-11 m^3 kg^-1 s^-2]
+         = 6.67430(15) [10^-11 ft^3 lb^-1 s^-2]
+    -| g = (G * M) / (r^2) 
+    -| M = Mass of the Earth
+         = 5.97 × 10^24 [kg]
+         = 1.317 × 10^25 [lb_m]
+
+Equation of State
+    -| P = rho * R T
+    -| R = Gas Constant
+         = 287 [J / (kg * K)]
+         = 1716 [(ft * lb_f) / (slug * deg_R)]
+    -| P = [rho * R * T] = [(1 / v) * R * T]
+    -| P * V = R * T
+
+Specifc Volume /  Volume per Unit mass
+    -| v = 1 / rho [m^3 / kg]
+
+Altitude
+    -| Geometric Altitude = Distance from sea level (h_G)
+    -| h = [r / (r + h_G)] * h_G 
+    -| r = Earth radius
+         = 6.36e6 [m]
+         = 20925721.785 [ft]
+    -| Gravitational Constant = g_naught
+    -| Absolute Altitude = Distance from the center of the Earth (h_a)
+    -| Goepotential Altitude = Geometric altitude adjusted for the variation
+                               of gravity with latitude and altitude (h)
+
+Isothermal Layer
+    -| Temperature is constant in these vertical regions
+    -| T = T_1
+    -| Pressure 
+    -| p = p_1 * exp{[-g_naught / (R * T)] * (h - h_1)}
+    -| rho = rho_1 * exp{[-g_naught / (R * T)] * (h - h_1)}
+
+Gradient Region
+    -| Lapse Rate = alpha
+    -| alpha is constant in these regions and is known as the lapse rate
+    -| alpha = (T - T_1) / (h - h_1)
+    -| Temperature
+    -| T = T_1 + (alpha * (h - h_1))
+    -| Pressure
+    -| P = P_1 * {(T / T_1) ** [-g_naught / (alpha * R)]}
+    -| Density
+    -| rho = rho_1 * {(T / T_1) ** [(-g_naught / (alpha * R) + 1)]}
+    
+    
+
+
+
+
+
