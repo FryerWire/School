@@ -48,7 +48,8 @@ for i, width in enumerate(WIDTH):
     data["Width"][width]["Height"].append(HEIGHT[i])
     data["Width"][width]["Cost"].append(COST[i])
 
-# json_str = json.dumps(data, indent=4)
+json_str = json.dumps(data, indent=4)
+print(json_str)
 
 parts_list = [
     [24, 2, (1 / 8)],
